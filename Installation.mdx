@@ -3,45 +3,46 @@ title: "🔧 Setup & Installation"
 description: "Follow these steps to get started with ConverseKit and connect your Salesforce org."
 ---
 
-### Step 1: Create a ConverseKit Account
+<Steps>
+  <Step title="Create a ConverseKit Account" stepNumber={1}>
+    Visit https://conversekit.ai and sign up for a new account.
 
-Visit https://conversekit.ai and sign up for a new account.
+    - Enter your **first name**, **last name**, and **email address**.
+    - Verify your email to proceed to the next step.
+  </Step>
+  <Step title="Set Up Your Organization" stepNumber={2}>
+    After verifying your email, you’ll be prompted to create your organization:
 
-- Enter your **first name**, **last name**, and **email address**.
-- Verify your email to proceed to the next step.
+    - Provide details like your **organization name**, **industry**, and other required fields.
+    - Click **Save** to complete setup.
 
-### Step 2: Set Up Your Organization
+    Once this step is done, your ConverseKit account and workspace will be ready.
+  </Step>
+  <Step title="Install the Salesforce App" stepNumber={3}>
+    To integrate with Salesforce, install the ConverseKit Managed Package using the link below:
 
-After verifying your email, you’ll be prompted to create your organization:
+    > 🔗 [Install ConverseKit for Salesforce](#)
 
-- Provide details like your **organization name**, **industry**, and other required fields.
-- Click **Save** to complete setup.
+    During installation, choose one of the following access levels:
 
-Once this step is done, your ConverseKit account and workspace will be ready.
+    - **Admins Only**
+    - **All Users**
+    - **Specific Profiles**
+  </Step>
+  <Step title="Assign the ConverseKit Permission Set" stepNumber={4}>
+    After installation:
 
-### Step 3: Install the Salesforce App
+    - Go to **Setup → Permission Sets** in Salesforce.
+    - Assign the `ConverseKit Admin` permission set to the integration user who will handle communication between Salesforce and ConverseKit.
+  </Step>
+  <Step title="Connect Your Salesforce Org" stepNumber={5}>
+    In the **ConverseKit Web App**:
 
-To integrate with Salesforce, install the ConverseKit Managed Package using the link below:
+    1. Navigate to **Integrations** from the main menu.
+    2. Select **Salesforce**, then click **Connect Org**.
+    3. Authenticate and authorize access when prompted.
+  </Step>
+</Steps>
 
-> 🔗 [Install ConverseKit for Salesforce](#)
 
-During installation, choose one of the following access levels:
-
-- **Admins Only**
-- **All Users**
-- **Specific Profiles**
-
-### Step 4: Assign the ConverseKit Permission Set
-
-After installation:
-
-- Go to **Setup → Permission Sets** in Salesforce.
-- Assign the `ConverseKit Admin` permission set to the integration user who will handle communication between Salesforce and ConverseKit.
-
-### Step 5. Connect Your Salesforce Org
-
-In the **ConverseKit Web App**:
-
-1. Navigate to **Integrations** from the main menu.
-2. Select **Salesforce**, then click **Connect Org**.
-3. Authenticate and authorize access when prompted.
+### 

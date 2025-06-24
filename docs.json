@@ -22,14 +22,14 @@
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Assistants",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "assistants/markdown",
+              "assistants/code",
+              "assistants/images",
+              "assistants/settings",
+              "assistants/navigation",
+              "assistants/reusable-snippets"
             ]
           }
         ]
