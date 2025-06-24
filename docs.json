@@ -22,6 +22,43 @@
             ]
           },
           {
+            "group": "Assistants",
+            "pages": [
+              "assitants/about-assistants",
+              "assitants/create-an-assistant",
+              "assitants/voice-configuration",
+              "assitants/knowledge-base",
+              "assitants/test-your-assistant",
+              "assitants/distribution-rules",
+              {
+					"group": "Tools",
+					"pages": [
+						"assitants/tools/tools"
+					]
+				},
+              {
+					"group": "Templates",
+					"pages": [
+						"assitants/templates/templates"
+					]
+				} 
+            ]
+          },
+          {
+            "group": "Phone Numbers",
+            "pages": [
+              "phone-numbers/create-free-phone-number",
+              {
+					"group": "Telephony Integrators",
+					"pages": [
+						"phone-numbers/telephony-integrations/twilio",
+                        "phone-numbers/telephony-integrations/sip-integration"
+					]
+				},
+              "phone-numbers/import-number-to-salesforce"
+            ]
+          },
+          {
             "group": "Best Practices",
             "pages": [
               "best-practices/prompting-guide"
