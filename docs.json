@@ -22,40 +22,9 @@
             ]
           },
           {
-            "group": "Assistants",
-            "pages": [
-              "assistants/markdown",
-              "assistants/code",
-              "assistants/images",
-              "assistants/settings",
-              "assistants/navigation",
-              "assistants/reusable-snippets"
-            ]
-          },
-          {
             "group": "Best Practices",
             "pages": [
               "best-practices/prompting-guide"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
             ]
           }
         ]
@@ -72,11 +41,6 @@
           "anchor": "Community",
           "href": "https://conversekit.ai",
           "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
