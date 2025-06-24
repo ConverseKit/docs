@@ -24,12 +24,12 @@
           {
             "group": "Assistants",
             "pages": [
-              "assitants/about-assistants",
-              "assitants/create-an-assistant",
-              "assitants/voice-configuration",
-              "assitants/knowledge-base",
-              "assitants/test-your-assistant",
-              "assitants/distribution-rules",
+              "assistants/about-assistants",
+              "assistants/create-an-assistant",
+              "assistants/voice-configuration",
+              "assistants/knowledge-base",
+              "assistants/test-your-assistant",
+              "assistants/distribution-rules",
               {
 					"group": "Tools",
 					"pages": [
