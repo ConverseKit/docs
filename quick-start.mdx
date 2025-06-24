@@ -1,0 +1,117 @@
+---
+title: "🚀 Quick Start"
+description: "Deploy your first Voice Agent from Salesforce in just a few minutes."
+---
+
+<Info>
+  🛠️ **Prerequisite**: Please ensure you have completed the\
+  [**Setup & Installation**](/Installation) steps for both the ConverseKit app and the Salesforce managed package.
+</Info>
+
+Follow these steps to install and run Mintlify on your operating system:
+
+### **Step 1**: Open ConverseKit in Salesforce
+
+- Log in to your **Salesforce org**.
+- Use the **App Launcher** (🔍 9-dot grid) to search for and open **ConverseKit**.
+- Navigate to the **Assistants** tab.
+- Click **New** to create your first Voice Assistant.
+
+### **Step 2**: Fill in Assistant Details
+
+You’ll be prompted to fill the following key fields:
+
+**First Message**
+
+> The initial message your assistant will speak at the start of the call.\
+> **Example as below**
+
+```markdown
+Hi! This is Maya from Glow & Shine Salon. I can help you book or manage your appointment. How can I assist you today?
+```
+
+**Instructions / Prompt**
+
+> Describe what the assistant is supposed to do, including behavior, tone, rules, and persona.\
+> **Example as below**
+
+```markdown
+You are Maya, a virtual assistant for Glow & Shine Salon. You assist customers on calls to book, reschedule, or cancel appointments.
+
+Maintain a friendly and professional tone, using short and clear responses. Do not use humor. Keep messages under 25 words when possible.
+
+Follow this structure:
+
+Greet the customer and offer help.
+
+Collect service type, stylist (optional), preferred date/time.
+
+If the time is unavailable, suggest alternatives.
+
+Confirm the details back to the customer.
+
+Clearly state the booking/reschedule/cancellation outcome.
+Never interrupt the customer. Avoid multiple questions at once. If the customer seems unsure, guide them gently.
+At the end, summarize the appointment and thank them.
+```
+
+**Summary Prompt**
+
+> Define how the assistant should summarize the conversation after it ends. This helps the assistant summarize the call after it ends. \
+> **Example as below**
+
+```markdown
+Summarize the call in 1–2 sentences. Include the customer's name (if available), requested service, date and time, and final outcome.
+```
+
+**Success Evaluation Prompt**
+
+> Add a prompt that guides the assistant in evaluating whether the conversation achieved its goal.\
+> **Example as below**
+
+```markdown
+Evaluate if the conversation was successful. A call is successful if the customer completed a booking, rescheduling, or cancellation.
+```
+
+**Structured Data Prompt**
+
+> Specify the data points you want extracted in JSON format.\
+> **Example as below**
+
+```markdown
+Extract the following fields: customer_name, contact_number, service, stylist, appointment_time, action, and outcome.
+```
+
+> **Examle Output**
+
+```json
+{
+  "customer_name": "Anita Sharma",
+  "contact_number": "9876543210",
+  "service": "Hair Spa",
+  "stylist": "Priya",
+  "appointment_time": "2025-07-02T16:00:00",
+  "action": "Book",
+  "outcome": "Confirmed"
+}
+```
+
+Once you click **Save**, your assistant is immediately created
+
+### **Step 3**: Test Your Assistant
+
+You can interact with your assistant right away from its detail page.
+
+- Open the **Assistant Details** page.
+- Scroll to the **Test Assistant** section.
+- Click **Talk with our assistant**.
+- Grant **microphone access** when prompted.
+- Start speaking and watch your assistant respond in real time\!
+
+<Info>
+  If you’d like to make your assistant available on external channels:
+
+  - Navigate to the **Web Widget** section to get embed code and instructions for adding the assistant to your website.
+  - Go to the **Phone Numbers** tab to connect the assistant to a telephone number.\
+    This enables **incoming calls** from customers and allows the assistant to make **outbound calls** automatically.
+</Info>
