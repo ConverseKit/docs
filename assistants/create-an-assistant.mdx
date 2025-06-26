@@ -1,13 +1,11 @@
 ---
 title: "Create An Assistant"
-description: "Description of your new file."
+description: "Follow these steps to quicky create a ConverseKit Assistant."
 ---
-
-Follow these steps to quicky create a converseKit Assistant.
 
 ## Fill in Assistant Details
 
-You’ll be prompted to fill the following sections with its Key Fields.
+You’ll be prompted to fill the following sections with its Key Fields. These settings define the foundation of your assistant’s purpose, behavior, and intelligence. Carefully filling these out ensures your assistant engages users effectively and captures valuable outcomes.
 
 ### Assistant Instructions
 
@@ -94,29 +92,35 @@ Extract the following fields: customer_name, contact_number, service, stylist, a
 
 ### Voice Settings
 
+These fields determine how your assistant sounds and communicates.
+
 <ParamField path="Voice" required>
-  The voice that you want your assistant to have
+  Select the specific voice your assistant should use from the available options (e.g., Paula, Vince, etc..)
 </ParamField>
+
 <ParamField path="Language" required>
-    The Language that you want your Assistant to Speak
+  Choose the language your assistant will speak in (e.g., English, Spanish, etc.).
 </ParamField>
 
 ### Other Settings
 
+Fine-tune the assistant's speaking speed and call ambiance.
+
 <ParamField path="Speed">
-    The speed at which you want your assistant to speak
+  Adjust how fast or slow the assistant speaks. Use this to suit different audiences or contexts.
 </ParamField>
 
 <ParamField path="Backchanneling Enabled" type="Checkbox">
-      Make the Assistant say words like 'mhmm', 'ya' etc. while listening to make the conversation sounds natural. Default disabled
+  When enabled, your assistant will naturally say words like 'mhmm', 'ya' etc. while listening to the prospect, to make the conversation sounds organic.
+
+  > Default disabled
 </ParamField>
-   
+
 <ParamField path="Background Sound">
-        If you want any background sound that you want to listen in the call eg: like in office
+  Select a light ambient background sound to play during calls (e.g., office sounds) to make the call environment feel more authentic.
 </ParamField>
 
 Once you click **Save**, your assistant is immediately created
-    
 
 <Info>
   If you’d like to make your assistant available on external channels:
