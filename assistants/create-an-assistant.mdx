@@ -2,3 +2,124 @@
 title: "Create An Assistant"
 description: "Description of your new file."
 ---
+
+Follow these steps to quicky create a converseKit Assistant.
+
+## Fill in Assistant Details
+
+You’ll be prompted to fill the following sections with its Key Fields.
+
+### Assistant Instructions
+
+<ParamField path="First Message" type="string">
+  The initial message your assistant will speak at the start of the call.\
+  **Example as below**
+</ParamField>
+
+```markdown
+Hi! This is Maya from Glow & Shine Salon. I can help you book or manage your appointment. How can I assist you today?
+```
+
+<ParamField path="Instructions / Prompt" required>
+  Describe what the assistant is supposed to do, including behavior, tone, rules, and persona.\
+  **Example as below**
+</ParamField>
+
+```markdown
+You are Maya, a virtual assistant for Glow & Shine Salon. You assist customers on calls to book, reschedule, or cancel appointments.
+
+Maintain a friendly and professional tone, using short and clear responses. Do not use humor. Keep messages under 25 words when possible.
+
+Follow this structure:
+
+Greet the customer and offer help.
+
+Collect service type, stylist (optional), preferred date/time.
+
+If the time is unavailable, suggest alternatives.
+
+Confirm the details back to the customer.
+
+Clearly state the booking/reschedule/cancellation outcome.
+Never interrupt the customer. Avoid multiple questions at once. If the customer seems unsure, guide them gently.
+At the end, summarize the appointment and thank them.
+```
+
+### Summary
+
+<ParamField path="Summary Prompt" required>
+  Define how the assistant should summarize the conversation after it ends. This helps the assistant summarize the call after it ends. \
+  **Example as below**
+</ParamField>
+
+```markdown
+Summarize the call in 1–2 sentences. Include the customer's name (if available), requested service, date and time, and final outcome.
+```
+
+### Success Evaluation
+
+<ParamField path=" Success Evaluation Prompt">
+  Add a prompt that guides the assistant in evaluating whether the conversation achieved its goal.\
+  **Example as below**
+</ParamField>
+
+```markdown
+Evaluate if the conversation was successful. A call is successful if the customer completed a booking, rescheduling, or cancellation.
+```
+
+### Structured Data
+
+<ParamField path="Structured Data Prompt">
+  Specify the data points you want extracted in JSON format.\
+  **Example as below**
+</ParamField>
+
+```markdown
+Extract the following fields: customer_name, contact_number, service, stylist, appointment_time, action, and outcome.
+```
+
+> **Examle Output**
+
+```json
+{
+  "customer_name": "Anita Sharma",
+  "contact_number": "9876543210",
+  "service": "Hair Spa",
+  "stylist": "Priya",
+  "appointment_time": "2025-07-02T16:00:00",
+  "action": "Book",
+  "outcome": "Confirmed"
+}
+```
+
+### Voice Settings
+
+<ParamField path="Voice" required>
+  The voice that you want your assistant to have
+
+  <ParamField path="Language" required>
+    The Language that you want your Assistant to Speak
+  </ParamField>
+  ### Other Settings
+
+  <ParamField path="Speed">
+    The speed at which you want your assistant to speak
+
+    <ParamField path="Backchanneling Enabled" type="Checkbox">
+      Make the Assistant say words like 'mhmm', 'ya' etc. while listening to make the conversation sounds natural. Default disabled
+
+      <ParamField path="Background Sound">
+        If you want any background sound that you want to listen in the call eg: like in office
+      </ParamField>
+      Once you click **Save**, your assistant is immediately created
+    </ParamField>
+  </ParamField>
+</ParamField>
+
+<Info>
+  If you’d like to make your assistant available on external channels:
+
+  - Navigate to the **Web Widget** section to get embed code and instructions for adding the assistant to your website.
+  - Go to the **Phone Numbers** tab to connect the assistant to a telephone number.\
+    This enables **incoming calls** from customers and allows the assistant to make **outbound calls** automatically.
+</Info>
