@@ -9,6 +9,8 @@ You’ll be prompted to fill the following sections with its Key Fields. These s
 
 ### Assistant Instructions
 
+This section defines how your assistant introduces itself and handles the entire conversation. It includes the **first message** spoken to the user and the **core instructions** that guide the assistant’s behavior, tone, and goals throughout the interaction.
+
 <ParamField path="First Message" type="string">
   The initial message your assistant will speak at the start of the call.\
   **Example as below**
@@ -45,6 +47,8 @@ At the end, summarize the appointment and thank them.
 
 ### Summary
 
+This section determines how the assistant will summarize the conversation once it ends. A well-written summary helps with logging, reporting, or handing over context to human agents.
+
 <ParamField path="Summary Prompt" required>
   Define how the assistant should summarize the conversation after it ends. This helps the assistant summarize the call after it ends. \
   **Example as below**
@@ -56,6 +60,8 @@ Summarize the call in 1–2 sentences. Include the customer's name (if available
 
 ### Success Evaluation
 
+This section helps the assistant self-evaluate whether the conversation achieved its intended purpose. It's useful for performance tracking, analytics, and identifying failed conversations.
+
 <ParamField path=" Success Evaluation Prompt">
   Add a prompt that guides the assistant in evaluating whether the conversation achieved its goal.\
   **Example as below**
@@ -66,6 +72,8 @@ Evaluate if the conversation was successful. A call is successful if the custome
 ```
 
 ### Structured Data
+
+Use this section to define the specific data points the assistant should extract during the call. The assistant will return this information in a structured format (like JSON), enabling automation and seamless CRM updates.
 
 <ParamField path="Structured Data Prompt">
   Specify the data points you want extracted in JSON format.\
@@ -92,7 +100,7 @@ Extract the following fields: customer_name, contact_number, service, stylist, a
 
 ### Voice Settings
 
-These fields determine how your assistant sounds and communicates.
+This section determine how your assistant sounds and communicates.
 
 <ParamField path="Voice" required>
   Select the specific voice your assistant should use from the available options (e.g., Paula, Vince, etc..)
@@ -104,7 +112,7 @@ These fields determine how your assistant sounds and communicates.
 
 ### Other Settings
 
-Fine-tune the assistant's speaking speed and call ambiance.
+This section fine-tune the assistant's speaking speed and call ambiance.
 
 <ParamField path="Speed">
   Adjust how fast or slow the assistant speaks. Use this to suit different audiences or contexts.
