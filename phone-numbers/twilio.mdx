@@ -1,0 +1,37 @@
+---
+title: "Import from Twilio"
+description: "To enable calling via Twilio, follow this two-step setup process to connect your Twilio number with ConverseKit"
+mode: "wide"
+---
+
+### 🧩 Step 1: Import Twilio Number in ConverseKit Web App
+
+1. Log in to the [**ConverseKit Web App**](#).
+2. Navigate to the **Phone Numbers** section.
+3. Click **“Import from Twilio”**.
+4. Fill in the required details:
+   - **Twilio Phone Number** (e.g., `+1XXXXXXXXXX`)
+   - **Name** – A friendly label for your internal reference (e.g., “Sales Line”)
+   - **Twilio Account SID**
+   - **Twilio Auth Token**
+5. Click **Import** to complete the process.
+
+> ✅ Once imported, your number will appear in the list with a unique **External ID**.\
+> This ID will be used to connect the number within your Salesforce org.
+
+---
+
+### 🧩 Step 2: Register Number in ConverseKit Salesforce App
+
+1. Open the **ConverseKit app** inside Salesforce.
+2. Navigate to the **Phone Numbers** tab.
+3. Click **“Import”**.
+4. Enter the **External ID** obtained in Step 1.
+5. Select the **Assistant** you want to associate with this number.
+6. Click **Import** to complete the setup.
+
+> 📞 Your Twilio number is now fully connected to ConverseKit and ready to handle inbound and outbound calls through your Assistant.
+
+### 🧪 Test Your Number
+
+Want to confirm it’s working? [Follow these steps to test your number.](#test-your-number)

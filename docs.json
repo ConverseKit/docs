@@ -47,15 +47,10 @@
           {
             "group": "Phone Numbers",
             "pages": [
+              "phone-numbers/phone-number-setup",
+              "phone-numbers/twilio",
               "phone-numbers/create-free-phone-number",
-              {
-					"group": "Telephony Integrators",
-					"pages": [
-						"phone-numbers/telephony-integrations/twilio",
-                        "phone-numbers/telephony-integrations/sip-integration"
-					]
-				},
-              "phone-numbers/import-number-to-salesforce"
+              "phone-numbers/sip-integration"
             ]
           },
           {
