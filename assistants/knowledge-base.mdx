@@ -1,4 +1,75 @@
 ---
-title: "Knowledge Base"
-description: "Description of your new file."
+title: "📚 Create a Knowledge Base"
+description: "Equip your Assistant with instant expertise"
 ---
+
+Empower your Voice Assistants with the knowledge they need to respond confidently and correctly. The Knowledge Base in ConverseKit allows you to add structured FAQs, policies, or documents that can be referenced in real-time during calls.
+
+### ✨ What Is the Knowledge Base?
+
+The **Knowledge Base** is a collection of support articles, FAQs, or custom documents that your Voice Assistants can refer to when responding to customer queries. It's especially useful for automating responses to repetitive or policy-based questions.
+
+Example use cases:
+
+- Company return policies
+- Service availability hours
+- Pricing FAQs
+- Insurance eligibility rules
+- Technical troubleshooting steps
+
+### 🛠️ How to Add Knowledge Base to your Assistants
+
+<Steps>
+  <Step title="🧩 Step 1: Upload Your Documents">
+    1. Open you **ConverseKit Salesforce App**.
+    2. Go to the **Documents** tab.
+    3. Upload any relevant files (PDF, DOCX, or TXT) you want your assistant to learn from.
+  </Step>
+  <Step title="🧩 Step 2: Select Your Assistant">
+    1. Open the **Assistants** tab.
+    2. Click to edit the Assistant you’d like to enrich with knowledge.
+  </Step>
+  <Step title="🧩 Step 3: Create a Knowledge Base">
+    1. Scroll down to the **Knowledge Base** section inside the Assistant details page.
+    2. Click **“Create Knowledge Base.”**
+    3. Select one or more **uploaded documents** from Step 1.
+    4. _(Optional)_ Add any **web URLs** you want the assistant to crawl and learn from.
+    5. Click **Save**.
+  </Step>
+</Steps>
+
+✅ That’s it\! Your Knowledge Base is now being processed.\
+Please wait a few minutes for the assistant to index and begin using the content in conversations.
+
+> 🧠 Once ready, your Assistant will automatically reference the uploaded knowledge when responding to user queries—no extra configuration needed.
+
+### 🧠 How Assistants Use the Knowledge Base
+
+When an Assistant receives a question during a call, it can search the Knowledge Base and use relevant entries to craft a response. You don’t need to embed this content in prompts—it’s referenced automatically when needed.
+
+✅ **Tip**: Ensure your entries are factual, concise, and written in a clear tone. The assistant paraphrases this information conversationally during the call.
+
+## ✅ Best Practices for Knowledge Base
+
+ConverseKit uses **vector embeddings** and **RAG (Retrieval-Augmented Generation)** to fetch accurate answers from your documents. Follow these tips for best results:
+
+### 🧠 Content Quality
+
+- Use **clear, concise, factual language**.
+- Break content into short paragraphs or bullet points.
+- Avoid scanned files or poorly formatted documents.
+
+### 📄 Organize Smartly
+
+- Keep each document focused on a single topic.
+- Use consistent Q&A format for FAQs.
+- Avoid duplicates across multiple files.
+
+### 🌐 When Using URLs
+
+- Only add clean, structured pages (e.g., FAQs, help docs).
+- Avoid dynamic or ad-heavy pages.
+
+<Info>
+  Use the **Test Assistant** feature and verify the response includes/paraphrases your knowledge base data.
+</Info>
