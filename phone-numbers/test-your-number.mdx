@@ -1,0 +1,36 @@
+---
+title: "🧪 Test Your Number"
+description: "Once your number is connected to an Assistant, you can test both outbound and inbound calling directly from Salesforce or your phone"
+---
+
+### ▶️ Place a Test Outbound Call
+
+1. Open the **ConverseKit app** inside your Salesforce org.
+2. Navigate to the **Phone Numbers** tab.
+3. Locate your imported phone number and click **“Test Number”**.
+4. Select any **Lead** or **Contact** from your org.
+5. Click **“Place The Call”**.
+
+> 🔊 The selected Lead/Contact will receive a phone call. If answered, they’ll hear and interact with your Voice Assistant in real time.
+
+<Note>
+  ⚠️ **Important: Mobile Number Format**
+
+  ConverseKit uses the `Mobile Number` field from both `Lead` and `Contact `records when placing outbound calls.
+
+  - Ensure the number is entered in **E.164 format** (e.g., `+1XXXXXXXXXX`).
+  - Missing or incorrectly formatted numbers may result in failed calls.
+
+  ✅ Example: `+14155552671` (U.S. number with country code)
+</Note>
+
+---
+
+### 📲 Receive an Inbound Call
+
+You can also test by simply calling the Twilio number from any phone:
+
+1. Dial your imported **Twilio number** from any mobile or landline phone.
+2. Your Assistant will answer and begin the conversation automatically.
+
+> ✅ This confirms your setup is ready to handle live inbound conversations.

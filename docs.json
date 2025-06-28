@@ -50,7 +50,8 @@
               "phone-numbers/phone-number-setup",
               "phone-numbers/twilio",
               "phone-numbers/create-free-phone-number",
-              "phone-numbers/sip-integration"
+              "phone-numbers/sip-integration",
+              "phone-numbers/test-your-number"
             ]
           },
           {
