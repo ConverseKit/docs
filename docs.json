@@ -33,13 +33,13 @@
               {
 					"group": "Tools",
 					"pages": [
-						"assitants/tools/tools"
+						"assistants/tools/tools"
 					]
 				},
               {
 					"group": "Templates",
 					"pages": [
-						"assitants/templates/templates"
+						"assistants/templates/templates"
 					]
 				} 
             ]
