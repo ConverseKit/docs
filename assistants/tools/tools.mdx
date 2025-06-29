@@ -9,10 +9,12 @@ In ConverseKit, Tools allow your voice assistants to perform real-time actions d
 
 When your assistant needs to take action—like booking an appointment, checking inventory, creating a case or assigning a follow-up—it calls the appropriate tool, passes input parameters (like a customer's name or date), and Once invoked, a tool silently performs backend logic and optionally returns a result for the assistant to use in its next spoken response.
 
-ConverseKit supports two ways to create tools:
+ConverseKit supports two types of tools
 
 1. **Salesforce Flows** — for point-and-click logic.
-2. **Apex Code** — for advanced custom functionality.
+2. **Apex Rest Resource** — for advanced custom functionality.
+
+While executing tools your assistant send a request to your flows or apex rest end point to process the data to bring the returned response into conversational context.
 
 ## 💡 Why Use Tools?
 
@@ -91,7 +93,7 @@ Here's what you'll need to fill in to create a tool like `Create_Case`.
       How long to wait for a response before timing out.\
       📌 Example: `20`
     </ParamField>
-    ## Tool Parameters
+    ### Tool Parameters
 
     List the inputs your tool needs from the assistant. Each parameter includes:
 
@@ -109,39 +111,53 @@ Here's what you'll need to fill in to create a tool like `Create_Case`.
       </ParamField>
       📌 Example Parameters:
 
-      - `name` (string, required): Name of the customer
-      - `contact_number` (number, required): Contact number
-      - `complaint` (string, required): Complaint description
+      | Parameter        | Parameter Type | Description                  | Required |
+      | :--------------- | :------------- | :--------------------------- | :------- |
+      | `name`           | String         | Name of the customer         | ✅ Yes    |
+      | `contact_number` | Number         | Customer’s contact number    | ✅ Yes    |
+      | `complaint`      | String         | Description of the complaint | ✅ Yes    |
+    </ParamField>
+    ### System Messages
+
+    They inform the user of what’s happening in the background, while executing the tools. These messages are optional for Async tools. But, recommended for good conversational UX.
+
+    <ParamField path="Request Start">
+      This message plays, when assistant begins processing the request. See the below example for your reference.
+
+      ```markdown
+      I am capturing your details into our CRM, This might take a while, please continue with your queries.  
+      ```
+    </ParamField>
+    <ParamField path="Request Delayed Message">
+      This message plays, If tool processing takes longer than expected
+
+      ```markdown
+      Apologies for the delay, I am capturing your details into our CRM, This might take a while, please continue with your queries.
+      ```
+    </ParamField>
+    <ParamField path="Request Completed Message">
+      This message plays, when Tool executes successfully
+
+      ```
+      Your details are captured successfully, I will be notifying our team to reach out to you.
+      ```
+    </ParamField>
+    <ParamField path="Request Failed Message">
+      This message plays, when Something goes wrong with Tool Execution
+
+      ```markdown
+      Sorry unfortunately, there is a technical issue storing your details. But, no worries, I will be notifying our team to reach out to you.
+      ```
     </ParamField>
   </Step>
+  <Step title="Final Step: Save and Link to Assistant">
+    Once the tool is saved:
+
+    - Go to your \*\*Assistant's detail page \*\*
+    - Navigate to the **Tools** section
+    - Click **Add Tool**
+    - Choose your newly created tool and \*\*save \*\*it.
+
+    Now your assistant can trigger this action during a live conversation\!
+  </Step>
 </Steps>
-
----
-
-## 💬 System Messages
-
-These messages are optional but recommended for good conversational UX. They inform the user of what’s happening in the background.
-
-| Message Type          | Description                                               |
-| :-------------------- | :-------------------------------------------------------- |
-| **Request Start**     | Assistant begins processing the request                   |
-| **Request Delayed**   | If processing takes longer than expected                  |
-| **Request Completed** | Tool executed successfully                                |
-| **Request Failed**    | Something went wrong (fallback message shown to the user) |
-
-📌 Example:
-
-> _“Your details are captured successfully, I will be notifying our team to reach out to you.”_
-
----
-
-## ✅ Final Step: Save and Link to Assistant
-
-Once the tool is saved:
-
-- Go to your **Assistant's configuration page**
-- Navigate to the **Tools** section
-- Click **Add Tool**
-- Choose your newly created tool and map the assistant’s extracted data fields to the tool’s parameters
-
-Now your assistant can trigger this action during a live conversation\!
