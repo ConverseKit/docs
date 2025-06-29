@@ -33,8 +33,10 @@
               {
 					"group": "Tools",
 					"pages": [
-						"assistants/tools/tools",
-                        "assistants/tools/create-tool"
+					   "assistants/tools/tools",
+                       "assistants/tools/create-tool",
+                       "assistants/tools/flow-tools",
+                       "assistants/tools/apex-tools"
 					]
 				},
               {

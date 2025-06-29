@@ -1,0 +1,81 @@
+---
+title: "Flow Tools"
+description: "Description of your new file."
+---
+
+Flow-based tools allow your **AI Voice Assistant** to execute powerful logic inside Salesforce — without writing code. You just build an **Autolaunched Flow**, and then connect it as a "Tool" in your ConverseKit app.
+
+## 🛠️ Example Use Case: Create Case Tool
+
+Let’s say you want your assistant to collect customer complaints and create a **Case record** in Salesforce.
+
+#### ✅ Step 1: Go to Flow Builder
+
+1. In Salesforce Setup, search for **“Flows”** in the Quick Find box.
+2. Click **New Flow**
+3. Choose **Autolaunched Flow (No Trigger)** → Click **Create**
+
+---
+
+#### 🧰 Step 2: Define Input Variables
+
+Your assistant will pass data into this flow. You must **create variables** to accept that data.
+
+For example, let’s collect:
+
+- `name` (Text)
+- `contact_number` (Number)
+- `complaint` (Text)
+
+For each:
+
+1. Click the **Manager** tab (left sidebar)
+2. Click **New Resource**
+3. Choose **Variable**
+4. Give it the exact API name (e.g., `name`, `contact_number`, `complaint`)
+5. Set:
+   - **Data Type** (e.g., Text or Number)
+   - **Available for input** → ✅ Check this
+
+Repeat for each parameter.
+
+---
+
+#### 📄 Step 3: Add the Logic (e.g., Create Case)
+
+Now build the logic using Flow elements:
+
+1. Click the **\+** icon and select **Create Records**
+2. Label: `Create Case`
+3. Create a new **Case** record
+4. Set values like:
+   - **Subject** → use `complaint`
+   - **Contact Phone** → use `contact_number`
+   - **Description** → use `complaint`
+   - **Contact Name** → use `name`
+
+💡 You can use any fields on the Case object based on your business logic.
+
+---
+
+#### 📤 Step 4: (Optional) Return Output to Assistant
+
+If you want your flow to return a confirmation or message:
+
+1. Create a new **Variable**
+   - Name: `confirmation_message`
+   - Data Type: **Text**
+   - Check **Available for output**
+2. Use an **Assignment** element to set the message:
+   - `confirmation_message = "Case created successfully!"`
+
+This will be returned to the assistant and spoken back to the user.
+
+---
+
+#### 💾 Step 5: Save & Activate
+
+1. Click **Save**
+   - Flow Label: `Create Voice Case`
+   - API Name: `createvoicecase` (remember this for tool setup)
+2. Click **Activate**
