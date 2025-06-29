@@ -33,7 +33,8 @@
               {
 					"group": "Tools",
 					"pages": [
-						"assistants/tools/tools"
+						"assistants/tools/tools",
+                        "assistants/tools/create-tool"
 					]
 				},
               {

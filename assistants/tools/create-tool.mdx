@@ -1,0 +1,111 @@
+---
+title: "Create Tool"
+description: "Let’s walk through how to create a Tool"
+---
+
+<Note>
+  **Pre-Requisite**
+
+  You need to **already have a Flow or Apex logic built** in Salesforce that:
+
+  - Accepts input fields (e.g., name, contact number)
+  - Does something meaningful (like creating a Case)
+  - Optionally returns a result back (e.g., Case Number)
+
+  If you don’t know how to do that yet, don’t worry. We’ll cover building those later. For now, just assume the logic is already built.
+</Note>
+
+<Steps>
+  <Step title="Step 1: Go to Tools Tab">
+    1. Open the **ConverseKit Salesforce App.**
+    2. Click on the **Tools** tab in the navigation.
+    3. Click **New Tool** to start
+  </Step>
+  <Step title="Step 2: Fill in Tool Information">
+    Here are the fields you’ll need to complete:
+
+    #### 🏷 Tool Info
+
+    Define **what your tool is** and **how it behaves during a conversation**.
+
+    | Field         | What it Means                                                                                                            | Example                                                    |
+    | :------------ | :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------- |
+    | `Tool Name`   | A unique internal name. Avoid spaces.                                                                                    | `Create_Case`                                              |
+    | `Description` | What this tool does. This helps you and others understand its purpose.                                                   | "Captures customer details and stores them in Salesforce." |
+    | `Async`       | Should the assistant wait while the tool runs? Set to `true` if the assistant should keep talking during tool execution. | ✅ Yes for Create_Case                                      |
+
+    ---
+
+    #### 🖥 Server Details
+
+    Define **what logic to run behind the scenes** when the tool is triggered.
+
+    | Field                           | What it Means                                                                                                                                                             | Example           |
+    | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------- |
+    | `Tool Type`                     | What kind of backend logic will this tool call? Choose: <br />• `Flow` – for declarative (point-and-click) automation <br />• `Apex REST Resource` – for code-based logic | `Flow`            |
+    | `Flow API Name / Apex Endpoint` | The unique name or URL mapping of your logic in Salesforce. For Flows, use the API name (no spaces). For Apex, use the URL Mapping set in `@RestResource`.                | `createvoicecase` |
+    | `Timeout`(Seconds)              | How long the assistant should wait for a response before giving up.                                                                                                       | `20`              |
+
+    ---
+
+    #### 🧾 Tool Parameters
+
+    The **Tool Parameters** section defines what **input data** your tool needs from the assistant to run correctly. Think of it like a form — your assistant collects data from the user during the call, and passes that information into the tool as parameters.
+
+    Define the input fields your assistant will send to the Flow or Apex.
+
+    | Field            | Description                                                                                                                                                                                                                             |
+    | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `Parameter`      | The **internal name** of the data being passed. This should exactly match the input variable name in your Salesforce Flow or Apex method. Use lowercase and underscores if needed (e.g., `contact_number`).                             |
+    | `Parameter Type` | What kind of data is expected for this parameter. Common types include:<br />- `string` (text)<br />- `number` (digits like phone numbers)<br />- `boolean` (true/false)<br />- `date` (calendar date)<br />- `datetime` (date \+ time) |
+    | `Description`    | A short note explaining what this parameter is for. This is helpful for others reviewing or editing the tool later. Example: “Contact number of the customer.”                                                                          |
+    | `Required`       | Check this box if the assistant must collect this information from the user before calling the tool. If unchecked, the tool will still run even if this value is missing (not recommended unless optional).                             |
+
+    **Example Tool Parameters**
+
+    Let’s say you're creating a tool called `Create_Case `that collects user complaints. Then, you’ll likely need the _customer’s name_, their_phone number\_  and a _description of the complaint_
+
+    Each of these values becomes a parameter.
+
+    | Parameter        | Type   | Description                  | Required |
+    | :--------------- | :----- | :--------------------------- | :------- |
+    | `name`           | string | Name of the customer         | ✅ Yes    |
+    | `contact_number` | number | Customer’s phone number      | ✅ Yes    |
+    | `complaint`      | string | Description of the complaint | ✅ Yes    |
+
+    These fields must match your Flow input variable names exactly. If your Flow expects `contactNumber` and you put `contact_number` in the tool, the integration will fail.
+
+    <Note>
+      As a best practice follow `snake_case `naming convention for parameters, Eg: `contact_number` This maintains consistency with Salesforce conventions and reduces integration friction.
+    </Note>
+    ---
+
+    #### 📢 System Messages
+
+    These are the things your assistant says _while the tool is running_. They’re useful for **asynchronous tools** where processing may take time.
+
+    | Message Type | What It’s For                                | Example                                                       |
+    | :----------- | :------------------------------------------- | :------------------------------------------------------------ |
+    | `Start`      | Assistant says this when tool starts running | _"I’m capturing your details into our CRM..."_                |
+    | `Delayed`    | If it’s taking longer than expected          | _"Sorry for the delay, still working on it..."_               |
+    | `Completed`  | When it succeeds                             | _"Your details are captured successfully\!"_                  |
+    | `Failed`     | When something goes wrong                    | _"Something went wrong. I’ll notify the team for follow-up."_ |
+
+    ---
+  </Step>
+  <Step title="Step 3: Save and Link to Assistant">
+    1. After you click **Save** on the tool…
+    2. Go to the **Assistant Details Page**
+    3. Scroll to the **Tools** section
+    4. Click **Add Tool**
+    5. Choose your new tool and **Save**
+
+    Now your assistant can **call this tool** during live calls—just like a human agent would take an action.
+  </Step>
+</Steps>
+
+## 🚀 What’s Next?
+
+Ready to try building your first real tool?
+
+👉 In the next section, we’ll walk you through **creating a Flow-based tool step-by-step** — from Flow creation to parameter setup to testing.
