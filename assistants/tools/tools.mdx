@@ -1,4 +1,147 @@
 ---
-title: "Tools"
-description: "Description of your new file."
+title: "🛠️ Tools"
+description: "Bridge conversations to real-world actions—right inside your CRM."
 ---
+
+## 🔧 What Are Tools?
+
+In ConverseKit, Tools allow your voice assistants to perform real-time actions during a conversation, by invoking logic that runs directly within your Salesforce CRM. Whether it's updating a lead status, fetching records, or integrating with an external API, tools help your assistant do more than talk—they help it act.
+
+When your assistant needs to take action—like booking an appointment, checking inventory, creating a case or assigning a follow-up—it calls the appropriate tool, passes input parameters (like a customer's name or date), and Once invoked, a tool silently performs backend logic and optionally returns a result for the assistant to use in its next spoken response.
+
+ConverseKit supports two ways to create tools:
+
+1. **Salesforce Flows** — for point-and-click logic.
+2. **Apex Code** — for advanced custom functionality.
+
+## 💡 Why Use Tools?
+
+Without tools, your assistant is limited to static responses. With tools, it can:
+
+- Fetch or update Salesforce data
+- Trigger business logic workflows
+- Make decisions based on real-time inputs
+- Connect to external systems (via Apex)
+- Personalize responses based on dynamic context
+
+<Steps>
+  
+</Steps>
+
+## 📝 Step-by-Step: Tool Creation
+
+Here's what you'll need to fill in to create a tool like `Create_Case`.
+
+---
+
+<Note>
+  **Pre-requisite**
+
+  Before creating a tool, make sure you have an existing **Salesforce Flow** or **Apex REST method** that:
+
+  - Accepts the required input parameters
+  - Performs the necessary logic or actions (e.g., creating a case, fetching data)
+  - Optionally returns a response back
+
+  > ⚠️ **Don’t worry if you haven’t created one yet.** In the next sections, we’ll walk you through step-by-step examples of building both a Flow-based tool and an Apex-based tool.
+  >
+  > For now, you can proceed by assuming the backend logic already exists and continue with the tool setup steps.
+</Note>
+
+<Steps>
+  <Step title="Step 1: Navigating to Tools">
+    1. Open the **ConverseKit Salesforce App**.
+    2. Navigate to the **Tools** tab.
+    3. Click **“New Tool”**.
+  </Step>
+  <Step title="Step 2: Fill in the tool information using below sections">
+    ### Tool Info
+
+    <ParamField path="Tool Name" required>
+      A unique name to identify the tool internally.\
+      📌 Example: `Create_Case`
+    </ParamField>
+    <ParamField path="Description" required>
+      Explain what the tool does.\
+      📌 Example: _“This action is used to capture customer details (name, contact number, complaint) and store it into the system.”_
+    </ParamField>
+    <ParamField path="Async">
+      Specify whether the tool should run **asynchronously**, meaning the assistant can continue the conversation while the action runs in the background.
+
+      ✅ Set to `true` if you don't want the assistant to wait.
+    </ParamField>
+    ### Server Details
+
+    <ParamField path="Tool Type" required>
+      Select the type of backend logic this tool invokes:
+
+      - **Flow** – For low-code automation using Salesforce Flows.
+      - **Apex REST Resource** – For custom business logic using Apex classes.
+
+      📌 Example: `Flow` (uses a flow named `createvoicecase`)
+    </ParamField>
+    <ParamField path="Flow API Name / Apex REST Resource" required>
+      Depending on the selected Action Type, enter:
+
+      - The **API Name** of the Salesforce Flow or The **URL Mapping** attribute of your Apex REST resource class
+
+      📌 Example: `createvoicecase`
+    </ParamField>
+    <ParamField path="Timeout (Seconds)" required>
+      How long to wait for a response before timing out.\
+      📌 Example: `20`
+    </ParamField>
+    ## Tool Parameters
+
+    List the inputs your tool needs from the assistant. Each parameter includes:
+
+    <ParamField path="parameter" required>
+      The field name (e.g., `phone`)
+    </ParamField>
+    <ParamField path="Parameter Type" required>
+      Data type (e.g., `string`, `number`)
+    </ParamField>
+    <ParamField path="Desciption" required>
+      Brief description of what it captures
+
+      <ParamField path="required" type="check box">
+        whether this parameter is mandatory?
+      </ParamField>
+      📌 Example Parameters:
+
+      - `name` (string, required): Name of the customer
+      - `contact_number` (number, required): Contact number
+      - `complaint` (string, required): Complaint description
+    </ParamField>
+  </Step>
+</Steps>
+
+---
+
+## 💬 System Messages
+
+These messages are optional but recommended for good conversational UX. They inform the user of what’s happening in the background.
+
+| Message Type          | Description                                               |
+| :-------------------- | :-------------------------------------------------------- |
+| **Request Start**     | Assistant begins processing the request                   |
+| **Request Delayed**   | If processing takes longer than expected                  |
+| **Request Completed** | Tool executed successfully                                |
+| **Request Failed**    | Something went wrong (fallback message shown to the user) |
+
+📌 Example:
+
+> _“Your details are captured successfully, I will be notifying our team to reach out to you.”_
+
+---
+
+## ✅ Final Step: Save and Link to Assistant
+
+Once the tool is saved:
+
+- Go to your **Assistant's configuration page**
+- Navigate to the **Tools** section
+- Click **Add Tool**
+- Choose your newly created tool and map the assistant’s extracted data fields to the tool’s parameters
+
+Now your assistant can trigger this action during a live conversation\!
