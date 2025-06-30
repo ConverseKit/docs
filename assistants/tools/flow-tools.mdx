@@ -3,79 +3,130 @@ title: "Flow Tools"
 description: "Description of your new file."
 ---
 
-Flow-based tools allow your **AI Voice Assistant** to execute powerful logic inside Salesforce — without writing code. You just build an **Autolaunched Flow**, and then connect it as a "Tool" in your ConverseKit app.
+Flow-based tools allow your **AI Voice Assistant** to execute powerful logic inside Salesforce — without writing code, you just build an **Autolaunched Flow**, and then connect it as a "Tool" in your ConverseKit app.
 
 ## 🛠️ Example Use Case: Create Case Tool
 
-Let’s say you want your assistant to collect customer complaints and create a **Case record** in Salesforce.
+Let’s say your assistant is talking to a customer who wants to report a complaint. You want the assistant to:
 
-#### ✅ Step 1: Go to Flow Builder
+- Capture the \*\*_customer’s name_, _contact number_ \*\*and **_complaint_**
+- Check if a contact already exists in CRM using the customer’s phone number.
+- If found, create a **Case** and relate it to that contact.
+- If not found, create a new **Contact**, then create the **Case record** in Salesforce with that new contact.
+- Return the **Case Number** and **Case Subject** as output.
 
-1. In Salesforce Setup, search for **“Flows”** in the Quick Find box.
-2. Click **New Flow**
-3. Choose **Autolaunched Flow (No Trigger)** → Click **Create**
+This is the backend automation logic behind a tool named `Create_Case`.
 
----
-
-#### 🧰 Step 2: Define Input Variables
-
-Your assistant will pass data into this flow. You must **create variables** to accept that data.
-
-For example, let’s collect:
-
-- `name` (Text)
-- `contact_number` (Number)
-- `complaint` (Text)
-
-For each:
-
-1. Click the **Manager** tab (left sidebar)
-2. Click **New Resource**
-3. Choose **Variable**
-4. Give it the exact API name (e.g., `name`, `contact_number`, `complaint`)
-5. Set:
-   - **Data Type** (e.g., Text or Number)
-   - **Available for input** → ✅ Check this
-
-Repeat for each parameter.
+This is a great use case for a **Flow-based Tool**. We’ll use a Salesforce **Autolaunched Flow** to handle the backend logic while your assistant keeps the conversation going.
 
 ---
 
-#### 📄 Step 3: Add the Logic (e.g., Create Case)
+### 🧱 Required Flow Inputs (Match Tool Parameters)
 
-Now build the logic using Flow elements:
+These inputs come from the assistant, so make sure the variable names match exactly in your flow:
 
-1. Click the **\+** icon and select **Create Records**
-2. Label: `Create Case`
-3. Create a new **Case** record
-4. Set values like:
-   - **Subject** → use `complaint`
-   - **Contact Phone** → use `contact_number`
-   - **Description** → use `complaint`
-   - **Contact Name** → use `name`
+| Variable Name    | Type   | Description                     | Input |
+| :--------------- | :----- | :------------------------------ | :---- |
+| `name`           | String | Customer's full name            | ✅     |
+| `contact_number` | Number | Mobile number with country code | ✅     |
+| `complaint`      | String | Complaint or issue description  | ✅     |
 
-💡 You can use any fields on the Case object based on your business logic.
+> 🔁 Make sure these match the Flow input variable names exactly.\
+> 🧱 Use `snake_case` for consistency and better integration.
 
----
+### 🎁 Flow Outputs
 
-#### 📤 Step 4: (Optional) Return Output to Assistant
+Your flow is returning two variables back to ConverseKit:
 
-If you want your flow to return a confirmation or message:
+| Variable Name          | Type   | Description                  | Output |
+| :--------------------- | :----- | :--------------------------- | :----- |
+| `created_caseid`       | String | ID of the created Case       | ✅      |
+| `created_case_subject` | String | Subject line of the new Case | ✅      |
 
-1. Create a new **Variable**
-   - Name: `confirmation_message`
-   - Data Type: **Text**
-   - Check **Available for output**
-2. Use an **Assignment** element to set the message:
-   - `confirmation_message = "Case created successfully!"`
+These are marked as **Output variables** in the flow, so the assistant can access and say them after execution.
 
-This will be returned to the assistant and spoken back to the user.
+## 🧭 Steps to Build the Flow
 
----
+<Steps>
+  <Step title="Create a New Auto-Launched Flow">
+    1. Go to **Setup → Flows**
+    2. Click **New Flow**
+    3. Select **Auto-Launched Flow (No Trigger)**
+    4. Click **Create**
+  </Step>
+  <Step title="Add Input Variables">
+    1. Click **New Resource → Variable**
+       - Name: `name`
+       - Data Type: Text
+       - Check **Available for Input**
 
-#### 💾 Step 5: Save & Activate
+    Repeat for:
 
-1. Click **Save**
-   - Flow Label: `Create Voice Case`
-   - API Name: `createvoicecase` (remember this for tool setup)
-2. Click **Activate**
+    - `contact_number` (Number, input)
+    - `complaint` (Text, input)
+  </Step>
+  <Step title="Lookup Existing Contact">
+    1. Drag an **Element → Get Records**
+       - Label: Fetch Contact
+       - Object: `Contact`
+       - Filter: `MobilePhone Equals {!contact_number}`
+       - Select **Only the first record**
+       - Store all fields
+    2. Connect this to a **Decision** element
+       - Label: `Record Found?`
+       - Outcome 1: Yes → If `Fetch_Contact.Id Is Null False`
+       - Default: No (contact not found)
+  </Step>
+  <Step title="Create Records">
+    **_<u>If Contact Found → Create Case:</u>_**
+
+    1. Use **Create Records**
+       - Object: `Case`
+       - Fields:
+         - `ContactId = {!Fetch_Contact.Id}`
+         - `Subject = {!complaint}`
+         - `priority = Medium`
+
+    **_<u>If Contact Not Found → Create Contact → Create Case:</u>_**
+
+    1. Create `Contact` using:
+       - `LastName = {!name}`
+       - `MobilePhone = {!contact_number}`
+    2. Create `Case ` using `Contact.Id` from above new contact
+
+       Fields:
+       - `ContactId =` Contact Id from above new conact
+       - `Subject = {!complaint}`
+       - `priority = Medium`
+  </Step>
+  <Step title="Create Output Variables">
+    1. Click **New Resource → Variable**
+       - Name: `created_case_id`
+       - Data Type: Text
+       - Check **Available for Output**
+
+    Repeat for:
+
+    - `created_case_subject` – Text – **Available for Output**
+  </Step>
+  <Step title="Add Output Assignment">
+    1. Use an **Assignment** element:
+       - Assign `created_case_id = Case.Id`
+       - Assign `created_case_subject = {!complaint}`
+  </Step>
+  <Step title="Save & Activate">
+    1. Name the Flow: `Create Voice Case`
+    2. Set **API Name**: `create_voice_case`
+    3. Click **Activate**
+  </Step>
+</Steps>
+
+Once All done, you will find a flow like below.
+
+![image.png](/images/image.png)
+
+Now that your backend logic is ready, it’s time to register this flow as a **Tool**.
+
+<Card title="Create Tool" icon="sparkles">
+  Let’s walk through how to create a Tool
+</Card>
