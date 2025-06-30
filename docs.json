@@ -29,7 +29,6 @@
               "assistants/voice-configuration",
               "assistants/knowledge-base",
               "assistants/test-your-assistant",
-              "assistants/distribution-rules",
               {
 					"group": "Tools",
 					"pages": [
@@ -55,6 +54,13 @@
               "phone-numbers/create-free-phone-number",
               "phone-numbers/sip-integration",
               "phone-numbers/test-your-number"
+            ]
+          },
+          {
+            "group": "Distribution Rules",
+            "pages": [
+               "distribution-rules/distribution-rules",
+               "distribution-rules/campaigns"
             ]
           },
           {
