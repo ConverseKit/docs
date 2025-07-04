@@ -89,9 +89,7 @@
   },
   "logo": {
     "light": "/logo/logo-light.png",
-    "dark": "/logo/logo-light.png",
-    "height": "50px",
-    "width": "230px"
+    "dark": "/logo/logo-light.png"
   },
   "navbar": {
     "links": [
