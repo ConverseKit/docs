@@ -1,4 +1,9 @@
-/* In a style.css file in your docs directory */
-.nav-logo img {
-  height: 65px !important; /* Maintain aspect ratio */
+.nav-logo {
+  height: 65px;
+  width: auto;
+  padding-left: 0.25rem; /* Same as Tailwind px-1 */
+  padding-right: 0.25rem;
+  position: relative;
+  display: block;
+  object-fit: contain;
 }
