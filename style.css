@@ -1,9 +1,8 @@
 .nav-logo {
   height: 65px;
   width: auto;
-  padding-left: 0.25rem; /* Same as Tailwind px-1 */
+  padding-left: 0.25rem;
   padding-right: 0.25rem;
   position: relative;
-  display: block;
   object-fit: contain;
 }
