@@ -1,0 +1,5 @@
+/* In a style.css file in your docs directory */
+.nav-logo img {
+  width: 230px; /* Adjust to your desired width */
+  height: auto; /* Maintain aspect ratio */
+}
